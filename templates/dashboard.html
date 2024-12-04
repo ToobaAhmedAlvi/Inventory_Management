@@ -1,0 +1,63 @@
+<!-- dashboard.html -->
+<h2>Inventory Dashboard</h2>
+
+<!-- Add Inventory Item -->
+<h3>Add New Item</h3>
+<form method="POST">
+    <label>Item Name:</label>
+    <input type="text" name="item_name" required><br>
+
+    <label>Price:</label>
+    <input type="number" step="0.01" name="price" required><br>
+
+    <label>Vendor Name:</label>
+    <input type="text" name="vendor_name" required><br>
+
+    <label>Quantity:</label>
+    <input type="number" name="quantity" required><br>
+
+    <button type="submit" name="add_item">Add Item</button>
+</form>
+
+<hr>
+
+<!-- Inventory Items List -->
+<h3>Existing Inventory</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Vendor Name</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.item_name }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.vendor_name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>
+                <!-- Modify Item Form -->
+                <form method="POST" style="display:inline;">
+                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                    <input type="text" name="item_name" value="{{ item.item_name }}" required>
+                    <input type="number" step="0.01" name="price" value="{{ item.price }}" required>
+                    <input type="text" name="vendor_name" value="{{ item.vendor_name }}" required>
+                    <input type="number" name="quantity" value="{{ item.quantity }}" required>
+                    <button type="submit" name="modify_item">Modify</button>
+                </form>
+
+                <!-- Delete Item Form -->
+                <form method="POST" style="display:inline;">
+                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                    <button type="submit" name="delete_item">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
