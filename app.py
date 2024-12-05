@@ -161,7 +161,7 @@ def dashboard():
     if request.method == 'POST' and 'delete_item' in request.form:
         item_id = request.form['item_id']
 
-        cursor.execute("DELETE FROM inventory_details WHERE id = ?", (item_id,))
+        cursor.execute("""DELETE FROM inventory_details WHERE id = ?""", (item_id,))
         conn.commit()
 
         flash('Inventory item deleted successfully!', 'success')
