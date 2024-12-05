@@ -1,5 +1,5 @@
-p {
-    border: 2px solid red;
+p{
+    border: solid red 2px;
     padding: 30px;
     font-family: courier;
     font-size: 160%;

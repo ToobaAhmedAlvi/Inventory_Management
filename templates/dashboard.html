@@ -1,14 +1,16 @@
 <!-- dashboard.html -->
+<!DOCTYPE html>
 <html>
     
 <head>
 <title> DASHBOARD </title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
     
 
 <h2>Inventory Management Dashboard</h2>
-<link rel="stylesheet" href="style.css">
+
 <!-- Add Inventory Item -->
 <h3>Add New Item</h3>
 <form method="POST">
@@ -33,7 +35,9 @@
 <h3>Existing Inventory</h3>
 <table>
     <thead>
+        <div>
         <tr>
+            
             <th>Item Name</th>
             <th>Price</th>
             <th>Vendor Name</th>
@@ -49,7 +53,9 @@
             <td>{{ item.vendor_name }}</td>
             <td>{{ item.quantity }}</td>
             <td>
+               </div> 
                 <!-- Modify Item Form -->
+                 <div>
                 <form method="POST" style="display:inline;">
                     <input type="hidden" name="item_id" value="{{ item.id }}">
                     <input type="text" name="item_name" value="{{ item.item_name }}" required>
@@ -68,6 +74,7 @@
         </tr>
         {% endfor %}
     </tbody>
+</div>
 </table>
 
 </body>
