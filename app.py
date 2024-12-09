@@ -181,7 +181,7 @@ def logout():
 @app.route('/')
 def main():
     #init_db()
-    return "Flask is working!"
+    return render_template('login.html') 
 
 
 
